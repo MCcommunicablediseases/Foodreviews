@@ -1,0 +1,172 @@
+CREATE TABLE Restaurants
+(
+RestaurantID VARCHAR(3) PRIMARY KEY,
+RestaurantName VARCHAR(100) NOT NULL,
+RestaurantPostcode VARCHAR(10) NOT NULL,
+RestaurantRating REAL
+);
+
+CREATE TABLE Users
+(
+UserName VARCHAR(25) PRIMARY KEY,
+UserEmail VARCHAR(100) UNIQUE NOT NULL,
+UserPassword VARCHAR(100) NOT NULL,
+UserFirstName VARCHAR(100) NOT NULL,
+UserLastName VARCHAR(100) NOT NULL,
+UserPhone VARCHAR(20)
+);
+
+CREATE TABLE Tags
+(
+Tag VARCHAR(25) PRIMARY KEY
+);
+
+CREATE TABLE RestaurantTags
+(
+Tag VARCHAR(25),
+RestaurantID VARCHAR(3),
+PRIMARY KEY (RestaurantID, Tag),
+FOREIGN KEY (RestaurantID) REFERENCES Restaurants(RestaurantID),
+FOREIGN KEY (Tag) REFERENCES Tags(Tag)
+);
+
+CREATE TABLE Reviews
+(
+ReviewNumber INT PRIMARY KEY IDENTITY(1,1),
+UserName VARCHAR(25),
+RestaurantID VARCHAR(3),
+ReviewDate DATE,
+ReviewStarRating INT,
+ReviewText VARCHAR(5000),
+FOREIGN KEY (RestaurantID) REFERENCES Restaurants(RestaurantID),
+FOREIGN KEY (UserName) REFERENCES Users(UserName)
+);
+
+INSERT INTO Users VALUES ('nigel','nsharpe@gmail.com','password', 'Norman', 'Sharpe', '+44' );
+INSERT INTO Users VALUES ('martha','Martha.Bunn@btinternet.com','password123', 'Martha', 'Bunn', '+44' );
+INSERT INTO Users VALUES ('parrot','PollyJ81@outlook.com','terriblepassword', 'Polly', 'Jones', '+44' );
+INSERT INTO Users VALUES ('roger','JollyjollyBrian@gmail.com','ilovepizza', 'Brian', 'Jolly', '+44' );
+INSERT INTO Users VALUES ('flippertigibbet','JJ_The_Butterfly@AOL.com','butterfliesrule', 'Janet', 'Jones', '+44' );
+INSERT INTO Users VALUES ('the real G','Paulson_G@mail.Yahoo.com','Garyisthebest76', 'Gary', 'Paulson', '+44' );
+
+
+INSERT INTO Tags VALUES('American');
+INSERT INTO Tags VALUES('Asian');
+INSERT INTO Tags VALUES('Bangladeshi');
+INSERT INTO Tags VALUES('Breakfast');
+INSERT INTO Tags VALUES('British');
+INSERT INTO Tags VALUES('Burgers');
+INSERT INTO Tags VALUES('Burritos');
+INSERT INTO Tags VALUES('Cafe');
+INSERT INTO Tags VALUES('Caribbean');
+INSERT INTO Tags VALUES('Chicken');
+INSERT INTO Tags VALUES('Chinese');
+INSERT INTO Tags VALUES('Coffee');
+INSERT INTO Tags VALUES('Curry');
+INSERT INTO Tags VALUES('Desserts');
+INSERT INTO Tags VALUES('Fish and Chips');
+INSERT INTO Tags VALUES('Groceries');
+INSERT INTO Tags VALUES('Halal');
+INSERT INTO Tags VALUES('Ice Cream');
+INSERT INTO Tags VALUES('Indian');
+INSERT INTO Tags VALUES('Italian');
+INSERT INTO Tags VALUES('Japanese');
+INSERT INTO Tags VALUES('Kebab');
+INSERT INTO Tags VALUES('Korean');
+INSERT INTO Tags VALUES('Lebanese');
+INSERT INTO Tags VALUES('Mexican');
+INSERT INTO Tags VALUES('Middle Eastern');
+INSERT INTO Tags VALUES('Milkshakes');
+INSERT INTO Tags VALUES('Nepalese');
+INSERT INTO Tags VALUES('Oriental');
+INSERT INTO Tags VALUES('Pancakes');
+INSERT INTO Tags VALUES('Pasta');
+INSERT INTO Tags VALUES('Pizza');
+INSERT INTO Tags VALUES('Pub Food');
+INSERT INTO Tags VALUES('Sandwiches');
+INSERT INTO Tags VALUES('Steak');
+INSERT INTO Tags VALUES('Street Food');
+INSERT INTO Tags VALUES('Sushi');
+INSERT INTO Tags VALUES('Tapas');
+INSERT INTO Tags VALUES('Thai');
+INSERT INTO Tags VALUES('Turkish');
+INSERT INTO Tags VALUES('Waffles');
+
+
+INSERT INTO Restaurants VALUES ('LTN','Latte Nero', 'KT7 0JB', NULL);
+INSERT INTO Restaurants VALUES ('KFT', 'KFT', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('MAC','Macsick', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('PNM','Pret NO Manger', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('PBU','Planet Burger', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('UND','Underground', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('GUR','Guru Raj', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('GBK','Gormet burger Kit', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('POT','Pizza-Off-Thames', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('BUB','Bubbleology', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('SPU','Spuds', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('PPJ','Pappa Jons', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('DOM','Dominos Pasta', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('HAB','Hangry Burger', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('SBS','Starlucks', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('CMK','Coco di Mama Kitchens', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('WGS','Wings Shout', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('LUG','Las Uglies', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('PAP','Pasta Pies', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('FPI','Fired Pizza', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('LFB','Legend Fish Bar', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('PIP','Pickled Pantry', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('SGK','Shah G Kebabs', 'KT7 0JB',NULL);
+INSERT INTO Restaurants VALUES ('PAR','Pokie & Roll', 'KT7 0JB',NULL);
+
+
+INSERT INTO RestaurantTags VALUES ('American', 'GBK');
+INSERT INTO RestaurantTags VALUES ('Asian', 'PAR');
+INSERT INTO RestaurantTags VALUES ('Bangladeshi', 'GUR');
+INSERT INTO RestaurantTags VALUES ('Breakfast', 'LTN');
+INSERT INTO RestaurantTags VALUES ('British', 'UND');
+INSERT INTO RestaurantTags VALUES ('Burgers', 'GBK');
+INSERT INTO RestaurantTags VALUES ('Burritos', 'LUG');
+INSERT INTO RestaurantTags VALUES ('Cafe', 'SBS');
+INSERT INTO RestaurantTags VALUES ('Caribbean', 'CMK');
+INSERT INTO RestaurantTags VALUES ('Chicken', 'KFT');
+INSERT INTO RestaurantTags VALUES ('Chinese', 'BUB');
+INSERT INTO RestaurantTags VALUES ('Coffee', 'PIP');
+INSERT INTO RestaurantTags VALUES ('Curry', 'GUR');
+INSERT INTO RestaurantTags VALUES ('Desserts', 'PIP');
+INSERT INTO RestaurantTags VALUES ('Fish and Chips', 'LFB');
+INSERT INTO RestaurantTags VALUES ('Groceries', 'PIP');
+INSERT INTO RestaurantTags VALUES ('Halal', 'SGK');
+INSERT INTO RestaurantTags VALUES ('Ice Cream', 'PPJ');
+INSERT INTO RestaurantTags VALUES ('Indian', 'GUR');
+INSERT INTO RestaurantTags VALUES ('Italian', 'DOM');
+INSERT INTO RestaurantTags VALUES ('Japanese', 'BUB');
+INSERT INTO RestaurantTags VALUES ('Korean', 'BUB');
+INSERT INTO RestaurantTags VALUES ('Kebab', 'SGK');
+INSERT INTO RestaurantTags VALUES ('Kebab', 'HAB');
+INSERT INTO RestaurantTags VALUES ('American', 'SPU');
+INSERT INTO RestaurantTags VALUES ('Asian', 'SPU');
+INSERT INTO RestaurantTags VALUES ('Bangladeshi', 'WGS');
+INSERT INTO RestaurantTags VALUES ('Breakfast', 'SBS');
+INSERT INTO RestaurantTags VALUES ('Burritos', 'LUG');
+INSERT INTO RestaurantTags VALUES ('Cafe', 'PNM');
+INSERT INTO RestaurantTags VALUES ('Caribbean', 'LUG');
+INSERT INTO RestaurantTags VALUES ('Coffee', 'PIP');
+INSERT INTO RestaurantTags VALUES ('Curry', 'SGK');
+INSERT INTO RestaurantTags VALUES ('Desserts', 'SBS');
+INSERT INTO RestaurantTags VALUES ('Fish and Chips', 'MAC');
+INSERT INTO RestaurantTags VALUES ('Groceries', 'MAC');
+INSERT INTO RestaurantTags VALUES ('Halal', 'PBU');
+INSERT INTO RestaurantTags VALUES ('Ice Cream', 'DOM');
+INSERT INTO RestaurantTags VALUES ('Indian', 'SPU');
+INSERT INTO RestaurantTags VALUES ('Italian', 'POT');
+INSERT INTO RestaurantTags VALUES ('Japanese', 'PAP');
+INSERT INTO RestaurantTags VALUES ('Kebab', 'PBU');
+INSERT INTO RestaurantTags VALUES ('Kebab', 'SGK');
+INSERT INTO RestaurantTags VALUES ('Caribbean', 'MAC');
+INSERT INTO RestaurantTags VALUES ('Kebab', 'MAC');
+INSERT INTO RestaurantTags VALUES ('Kebab', 'PBU');
+
+
+
+INSERT INTO Reviews VALUES ('nigel','LTN','2023-11-22', 4, 'Great place to drink, not so much for eating!');
+INSERT INTO Reviews VALUES ('martha','POT','2023-11-22', 5,'I recently had the pleasure of dining here and the experience was nothing short of delightful. Nestled in the heart of the city, this restaurant offers a unique blend of flavors that left my taste buds singing.From the moment I walked in, the ambiance captivated me. The modern yet cozy decor created a warm and inviting atmosphere. The staff was friendly and attentive, adding to the overall positive vibe of the place. Now, lets talk about the food. The menu boasted an impressive array of dishes, each more tempting than the last. I opted for the chefs special, a mouthwatering fusion of flavors that showcased the culinary expertise of the kitchen. The presentation was impeccable, and the freshness of the ingredients was evident in every bite. The service was prompt, and the waitstaff was knowledgeable about the menu, offering helpful recommendations.');
